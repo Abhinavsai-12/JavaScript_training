@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Forgot Password</title>
+  <link rel="shortcut icon" href="../assets/Spotify_icon.svg.png" type="image/x-icon">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      height: 100vh;
+      background-color: #191414;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Arial', sans-serif;
+    }
+
+    .login {
+      background-color: #1db95415;
+      border: 2px solid #1db954;
+      padding: 30px;
+      border-radius: 12px;
+      width: 320px;
+      /* box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); */
+      color: white;
+    }
+
+    .login h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      font-size: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      color: #1db954;
+    }
+
+    .icon {
+      width: 28px;
+      height: 28px;
+    }
+
+    .user {
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .user label {
+      margin-bottom: 5px;
+      font-size: 14px;
+    }
+
+    .user input {
+      padding: 10px;
+      border-radius: 6px;
+      border: none;
+      /* outline: none; */
+      font-size: 14px;
+    }
+
+    .sub {
+      display: flex;
+      justify-content: center;
+      margin-top: 15px;
+    }
+
+    .sub input{
+      background-color: #1db954;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .sub input:hover {
+      background-color: #169944;
+    }
+
+    .final {
+      margin-top: 20px;
+      font-size: 13px;
+      text-align: center;
+      color: #ccc;
+    }
+
+    .final a {
+      color: #1db954;
+      text-decoration: none;
+    }
+
+    .final a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login">
+    <h2><img src="../assets/Spotify_icon.svg.png" alt="Spotify" class="icon"> Forgot Password</h2>
+
+    <div class="user">
+      <label for="username">User Name</label>
+      <input type="text" name="username" placeholder="Enter Username" required>
+    </div>
+
+    <div class="user">
+      <label for="username">Mobile / Email</label>
+      <input type="text" name="username" placeholder="Enter Username" required>
+    </div>
+
+    <div class="user">
+      <label for="password">Password</label>
+      <input type="password" name="password" placeholder="Enter Password" required>
+    </div>
+
+    <div class="user">
+      <label for="password">Confirm Password</label>
+      <input type="password" name="password" placeholder="Enter Password" required>
+    </div>
+
+    <div class="sub">
+      <input type="submit" value="change Password" onclick="cp()">
+    </div>
+
+    <div class="final">
+        <p>Remember Password<a href="login.html"> Login</a></p>
+        <p>Don't have an account? <a href="signup.html">Sign up</a></p>
+    </div>
+  </div>
+
+
+  <script>
+    function cp(){
+        window.alert("Open your mail and click the activation link to change your password.")
+        window.location.href="login.html"
+
+    }
+  </script>
+
+</body>
+</html>

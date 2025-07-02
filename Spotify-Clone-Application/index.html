@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify clone app</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="assets/Spotify_icon.svg.png" type="image/x-icon">
+</head>
+<body>
+
+
+    <!-- Top Navbar -->
+    <nav class="navbar">
+      <div class="navbar-left">
+        <img src="assets/Spotify_icon.svg.png" alt="Logo" class="logo" width="30px" height="30px"/>
+        <a href="#" class="brand-name">Spotify Clone App</a>
+      </div>
+
+      <div class="search">
+        <input type="text" class="search-bar" placeholder="Search songs, artists..." />
+      </div>
+      
+      <div class="navbar-right">
+        <a href='#' onclick="themechange()">💡Change theme</a>
+        <a href="index.html">Home</a>
+        <!-- <a href="index.html">List of Songs</a> -->
+        <a href="Login/login.html">Login</a>
+        <a href="Login/signup.html" class="signup-btn">Sign Up</a>
+      </div>
+    </nav>
+
+
+
+
+
+
+    
+    <!-- Album List Section -->
+    <main class="album-section">
+      <h2>List of Songs</h2>
+      <div class="album-grid" id="albumGrid">
+        <!-- Album cards will be inserted by JavaScript -->
+      </div>
+    </main>
+
+
+    <!-- Sticky Bottom Music Player -->
+    <div class="music-player">
+      <div class="player-left">
+        <img src="assets/images/cover1.jpg" id="playercover" alt="cover" />
+        <div>
+          <h4 id="playertitle">Song Name</h4>
+          <p id="playerartist">Artist</p>
+        </div>
+      </div>
+    
+    
+      <div class="player-center">
+        <input type="range" id="progressBar" value="0" />
+        <!-- <p id="currentTime">00:00</p> / <p id="totalTime">00:00</p> -->
+        <div class="player-controls">
+          <button onclick="prevSong()">⏮️</button>
+          <button onclick="PlayandPause()" id="playBtn">▶️</button>
+          <button onclick="nextSong()">⏭️</button>
+        </div>
+      </div>
+    
+      <div class="player-right">🔊
+        <input type="range" id="volumeBar" min="0" max="1" step="0.01" value="1" />
+      </div>
+    
+    </div>
+
+
+
+  <script src="script.js"></script>
+  <script>
+
+
+  function themechange() {
+    document.body.classList.toggle("dark-theme");
+  }
+
+
+    const albumGrid = document.getElementById("albumGrid");
+    const audio = new Audio();
+    let currentSongIndex = 0;
+
+    const playerCover = document.getElementById("playercover");
+    const playerTitle = document.getElementById("playertitle");
+    const playerArtist = document.getElementById("playerartist");
+    const playBtn = document.getElementById("playBtn");
+    const progressBar = document.getElementById("progressBar");
+    const volumeBar = document.getElementById("volumeBar");
+
+
+
+    // Each song has a Creating a card
+    songs.forEach((song, index) => {
+      const card = document.createElement("div");
+      card.className = "album-card";
+      card.innerHTML = `
+        <img src="${song.cover}" alt="${song.title}">
+        <h4>${song.title}</h4>
+        <p>${song.artist}</p>
+        <button onclick="playSong(${index})"> ▶ Play</button>
+      `;
+      albumGrid.appendChild(card);
+    });
+
+
+
+
+    // Load & play song
+    function playSong(index) {
+      currentSongIndex = index;
+      const song = songs[index];
+      audio.src = song.src;
+      audio.play();
+
+      playerCover.src = song.cover;
+      playerTitle.textContent = song.title;
+      playerArtist.textContent = song.artist;
+      playBtn.textContent = "⏸️";
+    }
+
+
+
+
+    // Music Player Controls
+
+    // Play and pause the song`
+    function PlayandPause() {
+      if (audio.paused) {
+        audio.play();
+        playBtn.textContent = "⏸️";
+      } else {
+        audio.pause();
+        playBtn.textContent = "▶️";
+      }
+    }
+
+
+
+    // Next Song
+    function nextSong() {
+      currentSongIndex = (currentSongIndex + 1) % songs.length;
+      playSong(currentSongIndex);
+    }
+
+    // Previous Song
+    function prevSong() {
+      currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
+      playSong(currentSongIndex);
+    }
+
+
+
+
+
+    // Progress bar
+    audio.addEventListener("timeupdate", () => {
+      progressBar.value = (audio.currentTime / audio.duration) * 100 || 0;
+    });
+
+    progressBar.addEventListener("input", () => {
+      audio.currentTime = (progressBar.value / 100) * audio.duration;
+    });
+
+
+
+
+
+    // Volume bar
+    volumeBar.addEventListener("input", () => {
+      audio.volume = volumeBar.value;
+    });
+  </script>
+ 
+</body>
+</html>
