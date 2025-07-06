@@ -1,0 +1,36 @@
+In JavaScript, Local Storage is a built-in Web Storage API that allows 
+you to store key-value pairs in a web browser with no expiration date. 
+It’s commonly used to store user preferences, theme settings, and other 
+small pieces of data that need to persist across browser sessions.
+
+Key Features
+Stores data in key/value pairs.
+Stored data persists even after the browser is closed.
+Maximum size: around 5MB per origin.
+Only accessible by scripts from the same origin (domain + protocol + port).
+
+
+Syntax
+
+Save data
+localStorage.setItem("username", "Abhinav");
+
+Retrieve data
+const user = localStorage.getItem("username");
+console.log(user); // Abhinav
+
+
+Remove a specific item
+localStorage.removeItem("username");
+
+
+Remove all items
+localStorage.clear();
+
+
+Check how many items are stored
+console.log(localStorage.length);
+
+
+Get the key by index
+console.log(localStorage.key(0));

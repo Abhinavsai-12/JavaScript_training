@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Page 2 - Display Name</title>
+</head>
+<body>
+  <h2>Welcome Back!</h2>
+  <p id="displayName"></p>
+  <p><a href="index.html">Back to Page 1</a></p>
+
+  <script>
+    const name = localStorage.getItem("userName");
+    const display = document.getElementById("displayName");
+
+    if (name) {
+      display.textContent = `Hello, ${name}!`;
+    } else {
+      display.textContent = "No name found. Go back to Page 1 and enter your name.";
+    }
+  </script>
+</body>
+</html>

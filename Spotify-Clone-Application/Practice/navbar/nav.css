@@ -1,0 +1,77 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Navbar Styling */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #181818;
+  padding: 10px 20px;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo {
+  width: 35px;
+  height: 35px;
+}
+
+.brand-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding-left: 8px;
+  text-decoration: none;
+  color: white;
+}
+
+.search-bar {
+  padding: 8px 10px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  width: 400px;
+  /* padding-left: 50px; */
+}
+
+.sbtn{
+    padding-top: 5px;
+}
+
+.navbar-right{
+    margin-right: 10px;
+}
+
+.navbar-right a {
+  color: white;
+  text-decoration: none;
+  margin-left: 20px;
+  margin-right: 10px;
+  font-weight: 600;
+  font-size: 16px;
+  transition: color 0.2s;
+}
+
+.navbar-right a:hover {
+  color: #1db954;
+}
+
+.signup-btn {
+  background-color: #1db954;
+  padding: 6px 12px;
+  border-radius: 20px;
+  color: black;
+  font-weight: bold;
+}
